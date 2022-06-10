@@ -9,11 +9,13 @@
 
 <script>
 import axios from 'axios'
+import data from '../../shared/data'
 
 export default {
     name: 'BaseHeader',
     data() {
         return {
+            data,
             searchText: '',
         }
     },
@@ -24,14 +26,20 @@ export default {
 
                 params: {
                     api_key: 'e99307154c6dfb0b4750f6603256716d',
-                    query: 'ritorno',
+                    query: this.searchText,
                     languade: 'it-IT'
                 }
 
             }).then((response) => {
-            this.films = response.data.results;
+
+                console.log(response.data.results);
+                data.movies = response.data.results;
+                this.searchText = '';
+
+
             }).catch((error) => {
-            console.log(error);
+
+                console.log(error);
             })
         }
     }
