@@ -7,8 +7,8 @@
               <h2>{{movie.title}}</h2>
               <h3>{{movie.original_title}}</h3>
               <p>{{movie.vote_average}}</p>
-              <p>{{movie.original_language}}</p>
-              <h4><lang-flag :iso="movie.original_language"/></h4>
+              <p> <img class="flag" :src="existFlag(movie.original_language) ? require(`../../assets/flags/${movie.original_language}.png`) : null "> </p>
+              
           </li>
       </ul>
   </main>
@@ -22,8 +22,13 @@ export default {
     data() {
         return {
             data,
+            flagsAviable: [
+
+                'en'
+            ]
         }
     },
+
 
     methods: {
         urlImage(url) {
@@ -32,11 +37,20 @@ export default {
             } 
             return `https://image.tmdb.org/t/p/w185/${url}`
         },
+        existFlag(lang) {
+            return this.flagsAviable.includes(lang);
+        }
      
     }
 }
+
+
 </script>
 
-<style>
+<style lang='scss'>
+
+    .flag {
+        width: 20px;
+    }
 
 </style>
