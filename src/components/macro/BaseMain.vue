@@ -1,18 +1,23 @@
 <template>
-  <main>
-      <ul>
-          <li v-for="movie in data.movies" :key="movie.id" :alt="movie.title">
-              
-              <img :src="urlImage(movie.poster_path)">
-              <h2>{{movie.title}}</h2>
-              <h3>{{movie.original_title}}</h3>
-              <p>{{movie.vote_average}}</p>
-              <p> <img class="flag" :src="existFlag(movie.original_language) ? require(`../../assets/flags/${movie.original_language}.png`) : null "> </p>
-              
-          </li>
-      </ul>
-  </main>
-</template>
+    <main>
+        <ul>
+            <li v-for="movie in data.movies" :key="movie.id" :alt="movie.title">
+                
+                <img :src="urlImage(movie.poster_path)">
+                <h2>{{movie.title}}</h2>
+                <h3>{{movie.original_title}}</h3>
+                <p>{{movie.vote_average}}</p>
+                <p> 
+                    
+                    <img class="flag" v-if="existFlag(movie.original_language)" :src="require(`../../assets/flags/${movie.original_language}.png`)" :alt="movie.original_language"> 
+                    <img class="flag" v-else src="../../assets/flags/lgbt.png" alt="lgbt">
+                
+                </p>
+                
+            </li>
+        </ul>
+    </main>
+    </template>
 
 <script>
 import data from '../../shared/data';
@@ -26,6 +31,10 @@ export default {
 
                 'en',
                 'ja',
+                'fr',
+                'it',
+                'es',
+                'pt',
             ]
         }
     },
