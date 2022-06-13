@@ -24,7 +24,8 @@ export default {
             data,
             flagsAviable: [
 
-                'en'
+                'en',
+                'ja',
             ]
         }
     },

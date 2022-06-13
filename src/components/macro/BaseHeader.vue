@@ -30,18 +30,24 @@ export default {
                     languade: 'it-IT'
                 }
 
+                
+
             }).then((response) => {
+
+                
 
                 console.log(response.data.results);
                 data.movies = response.data.results;
                 this.searchText = '';
 
-
+                console.log(response);
+                
             }).catch((error) => {
 
                 console.log(error);
             })
         }
+        
     }
 }
 

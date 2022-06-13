@@ -6,4 +6,6 @@ export default Vue.observable ({
 
     movies: [],
 
+    
+
 });
