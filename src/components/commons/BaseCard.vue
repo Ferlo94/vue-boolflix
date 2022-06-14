@@ -56,7 +56,7 @@ export default {
     }
 
     body {
-        background: grey;
+        background: lightgrey;
     }
     
 </style>
