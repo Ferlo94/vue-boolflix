@@ -1,16 +1,15 @@
 <template>
-    <header>
-        <form @submit.prevent="searching">
-            <input type="text" v-model="searchText" required>
-            <button type="submit">CERCA</button>
-        </form>
-    </header>
+  <header>
+      <form @submit.prevent="searching">
+          <input type="text" v-model="searchText" required>
+          <button type="submit">Search</button>
+      </form>
+  </header>
 </template>
 
 <script>
-import axios from 'axios'
-import data from '../../shared/data'
-
+import axios from 'axios';
+import data from '../../shared/data';
 export default {
     name: 'BaseHeader',
     data() {
@@ -19,70 +18,37 @@ export default {
             searchText: '',
         }
     },
-
     methods: {
-        // FILM
-        searching () {
-            axios.get('https://api.themoviedb.org/3/search/movie',{
-
+        searching() {
+            // Films
+            axios.get('https://api.themoviedb.org/3/search/movie', {
                 params: {
                     api_key: 'e99307154c6dfb0b4750f6603256716d',
                     query: this.searchText,
-                    languade: 'it-IT'
+                    language: 'it-IT'
                 }
-
-                
-
             }).then((response) => {
-
-                console.log(response.data.results);
                 data.movies = response.data.results;
                 this.searchText = '';
-
-                console.log(response);
-
             }).catch((error) => {
-
                 console.log(error);
             })
-
-            // SERIES
-            axios.get('https://api.themoviedb.org/3/search/tv',{
-
+            // Serie TV
+            axios.get('https://api.themoviedb.org/3/search/tv', {
                 params: {
                     api_key: 'e99307154c6dfb0b4750f6603256716d',
                     query: this.searchText,
-                    languade: 'it-IT'
+                    language: 'it-IT'
                 }
-
-                
-
             }).then((response) => {
-
-                console.log(response.data.results);
                 data.tv = response.data.results;
                 this.searchText = '';
-
-                console.log(response);
-
             }).catch((error) => {
-
                 console.log(error);
             })
         }
-
-        
-        
     }
 }
-
-
-
-
 </script>
-
-<style>
-
-</style>
 
 

@@ -1,3 +1,4 @@
+
 <template>
   <div id="app">
     <BaseHeader/>
@@ -6,18 +7,15 @@
 </template>
 
 <script>
-import BaseHeader from '../src/components/macro/BaseHeader.vue'
-import BaseMain from '../src/components/macro/BaseMain.vue'
-
+import BaseHeader from './components/macro/BaseHeader.vue'
+import BaseMain from './components/macro/BaseMain.vue'
 export default {
   name: 'App',
   components: {
     BaseHeader,
-    BaseMain
+    BaseMain,
   }
 }
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>
